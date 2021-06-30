@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OFF, FATAL, ERROR, WARN, INFO, DEBUG, TRACE, ALL -->
+
+<configuration debug="false">
+	<include resource="org/springframework/boot/logging/logback/base.xml" />
+
+	<!-- Method 2 -->
+	<appender name="JSON" class="ch.qos.logback.core.FileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <encoder>
+			<pattern>${FILE_LOG_PATTERN}</pattern>
+		</encoder>
+        <file>${LOG_FILE}.json</file>
+        
+    </appender>
+
+    <!-- Method 3 -->
+    
+
+	<root level="WARN">
+		<appender-ref ref="CONSOLE" />
+		<!-- Method 1-->
+		<appender-ref ref="FILE" />
+		<!-- Method 2 -->
+		<appender-ref ref="JSON" />
+	</root>
+
+    
+
+</configuration>
